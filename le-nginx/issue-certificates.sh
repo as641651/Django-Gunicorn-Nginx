@@ -24,11 +24,11 @@ set -e
 
 # Do you want to run Let's Encrypt in "staging" or "live" mode? You should only
 # change this to "live" once you are sure everything is working correctly.
-LETS_ENCRYPT_MODE="staging"
+LETS_ENCRYPT_MODE="live"
 
 
 # Space separated list of domains to register SSL certificates for.
-REGISTER_DOMAINS="test.example.com"
+REGISTER_DOMAINS="mlr2d.com"
 # Here's an example if you had multiple domains (you could use 1 line too):
 #   REGISTER_DOMAINS="example.com
 #                     www.example.com
@@ -67,7 +67,7 @@ CERTIFICATE_BASE_FILENAME="$(echo -e "${REGISTER_DOMAINS%% *}" \
 # Default locations for where certificates will live.
 ACME_TINY_SHARE_PATH="Docker/prod/nginx/ssl/acme-tiny"
 ACME_TINY_LOG_PATH="Docker/prod/nginx/ssl/log/acme-tiny"
-ACME_CHALLENGE_PATH="Docker/prod/nginx/ssl/letsencrypt/.well-known/acme-challenge"
+ACME_CHALLENGE_PATH="${ACME_TINY_LOG_PATH}"
 
 PRIV_KEY_ACCOUNT="${ACME_TINY_SHARE_PATH}/account.key"
 PRIV_KEY_DOMAIN="${ACME_TINY_SHARE_PATH}/${CERTIFICATE_BASE_FILENAME}.key"
@@ -76,8 +76,9 @@ DOMAIN_CSR="${ACME_TINY_SHARE_PATH}/${CERTIFICATE_BASE_FILENAME}.csr"
 SIGNED_CERTIFICATE="${ACME_TINY_SHARE_PATH}/${CERTIFICATE_BASE_FILENAME}.crt"
 INTERMEDIATE_CERTIFICATE="${ACME_TINY_SHARE_PATH}/intermediate.crt"
 
-FINAL_PRIV_KEY="Docker/prod/nginx/ssl/key/${CERTIFICATE_BASE_FILENAME}.key"
-CHAINED_FINAL_CERTIFICATE="Docker/prod/nginx/ssl/key/private/${CERTIFICATE_BASE_FILENAME}.pem"
+KEY_DIR="Docker/prod/nginx/ssl/key/"
+FINAL_PRIV_KEY="${KEY_DIR}/${CERTIFICATE_BASE_FILENAME}.key"
+CHAINED_FINAL_CERTIFICATE="${KEY_DIR}/${CERTIFICATE_BASE_FILENAME}.pem"
 
 
 # Create the acme-tiny install path if it doesn't exist already.
@@ -87,6 +88,9 @@ mkdir -p "${ACME_TINY_SHARE_PATH}"
 
 # Create a path to store acme-tiny's log output.
 mkdir -p "${ACME_TINY_LOG_PATH}"
+
+# path to store keys for mapping to container
+mkdir -p "${KEY_DIR}"
 
 
 # Create the account and domain keys, but only when they don't exist.
@@ -120,10 +124,9 @@ if [ "${LETS_ENCRYPT_MODE}" == "live" ]; then
     LETS_ENCRYPT_CA_URL="${LETS_ENCRYPT_LIVE_URL}"
 fi
 
-
 # Generate a Let's Encrypt SSL certificate.
 # 2>> redirects STDOUT and STDERR to STDOUT and appends it to the log file.
-/usr/local/bin/acme-tiny.py \
+python acme-tiny.py \
     --account-key "${PRIV_KEY_ACCOUNT}" \
     --csr "${DOMAIN_CSR}" \
     --acme-dir "${ACME_CHALLENGE_PATH}" \
@@ -145,4 +148,4 @@ cp "${PRIV_KEY_DOMAIN}" "${FINAL_PRIV_KEY}"
 
 
 # Restart nginx / apache2 / haproxy / etc. to pickup the certificate change.
-service "${RESTART_SERVICE}" restart
+#service "${RESTART_SERVICE}" restart
