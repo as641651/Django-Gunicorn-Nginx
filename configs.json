@@ -1,85 +1,85 @@
 {
     "00_Introduction_Terminologies.ipynb": {
         "code_url": "",
-        "page_id": 401,
+        "page_id": 93301,
         "page_name": "00_Introduction_Terminologies",
         "pdf": false
     },
     "01_Nginx.ipynb": {
         "code_url": "",
-        "page_id": 402,
+        "page_id": 93302,
         "page_name": "01_Nginx",
         "pdf": false
     },
     "02_NginxDocker_commands.ipynb": {
         "code_url": "https://github.com/as641651/Django-Gunicorn-Nginx/tree/master/nginx",
-        "page_id": 403,
+        "page_id": 93303,
         "page_name": "02_NginxDocker_commands",
         "pdf": false
     },
     "03_Directives_CoreConfigs.ipynb": {
         "code_url": "https://github.com/as641651/Django-Gunicorn-Nginx/tree/master/nginx",
-        "page_id": 404,
+        "page_id": 93304,
         "page_name": "03_Directives_CoreConfigs",
         "pdf": false
     },
     "04_ServerContext.ipynb": {
         "code_url": "https://github.com/as641651/Django-Gunicorn-Nginx/tree/master/nginx",
-        "page_id": 405,
+        "page_id": 93305,
         "page_name": "04_ServerContext",
         "pdf": false
     },
     "05_LocationContext.ipynb": {
         "code_url": "https://github.com/as641651/Django-Gunicorn-Nginx/tree/master/nginx",
-        "page_id": 406,
+        "page_id": 93306,
         "page_name": "05_LocationContext",
         "pdf": false
     },
     "06_ReverseProxy_to_Docker.ipynb": {
         "code_url": "https://github.com/as641651/Django-Gunicorn-Nginx/tree/master/nginx-django",
-        "page_id": 407,
+        "page_id": 93307,
         "page_name": "06_ReverseProxy_to_Docker",
         "pdf": false
     },
     "07_ServingWithGunicorn.ipynb": {
         "code_url": "https://github.com/as641651/Django-Gunicorn-Nginx/tree/master/nginx-django",
-        "page_id": 408,
+        "page_id": 93308,
         "page_name": "07_ServingWithGunicorn",
         "pdf": false
     },
     "08_Point_DomainName_to_publicIP.ipynb": {
         "code_url": "",
-        "page_id": 409,
+        "page_id": 93309,
         "page_name": "08_Point_DomainName_to_publicIP",
         "pdf": false
     },
     "09_CheckPortStatus.ipynb": {
         "code_url": "",
-        "page_id": 410,
+        "page_id": 93310,
         "page_name": "09_CheckPortStatus",
         "pdf": false
     },
     "10_ForwardPort_to_publicIP.ipynb": {
         "code_url": "",
-        "page_id": 411,
+        "page_id": 93311,
         "page_name": "10_ForwardPort_to_publicIP",
         "pdf": false
     },
     "11_SelfSigned_SSL.ipynb": {
         "code_url": "https://github.com/as641651/Django-Gunicorn-Nginx/tree/master/ssl-nginx",
-        "page_id": 412,
+        "page_id": 93312,
         "page_name": "11_SelfSigned_SSL",
         "pdf": false
     },
     "12_OpenSourceSSL_LetsEncrypt.ipynb": {
         "code_url": "https://github.com/as641651/Django-Gunicorn-Nginx/tree/master/le-nginx",
-        "page_id": 413,
+        "page_id": 93313,
         "page_name": "12_OpenSourceSSL_LetsEncrypt",
         "pdf": false
     },
     "Refresher_Linux.ipynb": {
         "code_url": "",
-        "page_id": 414,
+        "page_id": 93314,
         "page_name": "Refresher_Linux",
         "pdf": false
     },
@@ -102,6 +102,7 @@
         "12_OpenSourceSSL_LetsEncrypt.ipynb",
         "Refresher_Linux.ipynb"
     ],
-    "module_id": 400,
-    "module_name": "Django-Gunicorn-Nginx"
+    "module_id": 93300,
+    "module_name": "Django-Gunicorn-Nginx",
+    "tags": "DB"
 }
